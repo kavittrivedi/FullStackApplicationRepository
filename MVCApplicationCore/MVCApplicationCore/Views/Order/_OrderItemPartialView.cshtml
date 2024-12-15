@@ -1,0 +1,8 @@
+﻿@model List<OrderItem>
+
+<ul class="list-group">
+    @foreach (var order in Model)
+    {
+        <li class="list-group-item">Order Item: #@order.OrderItemId | Item Name: @order.ItemName | Item Price: @order.ItemPrice</li>
+    }
+</ul>

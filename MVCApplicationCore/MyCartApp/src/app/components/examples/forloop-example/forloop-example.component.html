@@ -1,0 +1,48 @@
+<h1>Categories *ngFor Example</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of Categories">
+            <td>
+                {{category.categoryName}}
+            </td>
+            <td>
+                {{category.categoryDescription}}
+            </td>
+            <td>
+                <a>Edit</a>|
+                <a>Details</a>|
+                <a>Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h1>Categories "ng-template" Example</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-category [ngForOf]="Categories">
+            <tr>
+                <td>{{ category.categoryName }}</td>
+                <td>{{ category.categoryDescription }}</td>
+                <td>
+                    <a>Edit</a> |
+                    <a>Details</a> |
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>

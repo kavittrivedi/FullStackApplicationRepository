@@ -1,0 +1,31 @@
+﻿@model List<Category>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                <td>
+                    <img src="@Url.Content("~/Uploads/"+@category.FileName)" alt="Category image" width="50" height="50"/>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@category.CategoryId">Edit</a>|
+                    <a asp-action="Details" asp-route-id="@category.CategoryId">Details</a>|
+                    <a asp-action="Delete" asp-route-id="@category.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create">Add</a>

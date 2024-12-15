@@ -1,0 +1,54 @@
+﻿@using ClientApplicationCore.ViewModels
+@model ProductViewModel
+<h1>Add Product</h1>
+
+<form action="@Url.Action("CreateMVC5", "Product")" method="post">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.CategoryId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "CategoryId", "CategoryName"), new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductName, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductDescription, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ProductDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductDescription, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductPrice, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">In Stock:</label><br />
+        <div class="form-check">
+            @Html.RadioButtonFor(m => m.InStock, true, new { @class = "form-check-input", id = "inStockTrue" })
+            <label class="form-check-label" for="inStockTrue">Yes</label>
+        </div>
+        <div class="form-check">
+            @Html.RadioButtonFor(m => m.InStock, false, new { @class = "form-check-input", id = "inStockFalse" })
+            <label class="form-check-label" for="inStockFalse">No</label>
+        </div>
+        @Html.ValidationMessageFor(m => m.InStock, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "control-label" })
+        @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-check-input" })
+        @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a href="@Url.Action("Index", "Product")" class="btn btn-default">Cancel</a>
+    </div>
+</form>

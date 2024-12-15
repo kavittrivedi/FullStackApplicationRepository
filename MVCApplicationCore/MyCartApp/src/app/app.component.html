@@ -1,0 +1,94 @@
+<header>
+  <!-- <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="router-link-active">My Product App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/privacy']" routerLinkActive="router-link-active">Privacy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/categories']"
+              routerLinkActive="router-link-active">Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/products']" routerLinkActive="router-link-active">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/ifexample']" routerLinkActive="router-link-active">*ngIf and
+              ng-template example</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/forloopexample']"
+              routerLinkActive="router-link-active">*ngfor and ng-template example</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/pipeexample']" routerLinkActive="router-link-active">Pipe
+              Example</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/templateform']"
+              routerLinkActive="router-link-active">Template Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/reactiveform']"
+              routerLinkActive="router-link-active">Reactive Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/categoriesproducts']"
+              routerLinkActive="router-link-active">Categories & Products</a>
+          </li>
+          
+
+        </ul>
+        <ul class="nav navbar-nav ml-auto" *ngIf="!isAuthenticated">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active"><span
+                class="fas fa-user"> Sign Up</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/signin']" routerLinkActive="router-link-active"><span
+                class="fas fa-sign-in-alt"> Sign In</span></a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto" *ngIf="isAuthenticated">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="router-link-active"><span
+                class="fas fa-user"> {{username}}</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="signOut()" style="cursor: pointer;" routerLinkActive="router-link-active"><span
+                class="fas fa-sign-in-alt"> signout?</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+  <app-header-menu></app-header-menu>
+</header>
+<div class="container">
+  <main role="main" class="pb-3">
+    <app-home  *ngIf="username" [username]="username"></app-home>
+    <!-- <div id="autoCloseAlert" class="alert alert-danger alert-dismissible fade show">
+              <b>Error:</b> @errorMessage
+              <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div> -->
+
+    <!-- <div id="messageContainer" class="message-container"></div> -->
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<app-footer-menu></app-footer-menu>
+<!-- <footer class="border-top footer text-muted">
+  <div class="container">
+    &copy; 2024 - My Product App -
+    <a [routerLink]="['/privacy']" routerLinkActive="router-link-active">Privacy</a>
+  </div>
+</footer> -->

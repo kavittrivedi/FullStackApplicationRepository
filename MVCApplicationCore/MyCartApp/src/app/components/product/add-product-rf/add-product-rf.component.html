@@ -1,0 +1,88 @@
+<div class="continer">
+    <h2>Add Product (RF)</h2>
+    <div *ngIf="loading" class="loader-overlay">
+        <img src="assets/loaderImage.gif" class="loader-overlay" alt="loading" />
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Product name:</label>
+                    <input type="text" class="form-control" id="productName" formControlName="productName">
+                    <div *ngIf="formControls['productName'].invalid && formControls['productName'].touched">
+                        <small class="text-danger" *ngIf="formControls['productName'].errors?.['required']">
+                            Product name is required.
+                        </small>
+                        <small class="text-danger" *ngIf="formControls['productName'].errors?.['minlength']">
+                            Product name must be at least 2 characters long.
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="productDescription" class="form-label">Product description:</label>
+                    <textarea class="form-control" id="productDescription"
+                        formControlName="productDescription"></textarea>
+                    <div
+                        *ngIf="formControls['productDescription'].invalid && formControls['productDescription'].touched">
+                        <small class="text-danger" *ngIf="formControls['productDescription'].errors?.['required']">
+                            Product description is required.
+                        </small>
+                        <small class="text-danger" *ngIf="formControls['productDescription'].errors?.['minlength']">
+                            Product name must be at least 2 characters long.
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="categoryId" class="form-label">Category:</label>
+                    <select class="form-control" id="categoryId" formControlName="categoryId">
+                        <option value="">--Select--</option>
+                        <option *ngFor="let category of categories" [value]="category.categoryId">
+                            {{category.categoryName}}</option>
+                    </select>
+                    <div *ngIf="formControls['categoryId'].invalid && formControls['categoryId'].touched">
+                        <small class="text-danger"
+                            *ngIf="formControls['categoryId'].errors?.['required'] || formControls['categoryId'].errors?.['invalidCategory']">
+                            Category is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Product price:</label>
+                    <input type="number" class="form-control" id="productPrice" formControlName="productPrice">
+                    <div *ngIf="formControls['productPrice'].invalid && formControls['productPrice'].touched">
+                        <small class="text-danger" *ngIf="formControls['productPrice'].errors?.['required']">
+                            Product price is required.
+                        </small>
+                        <small class="text-danger" *ngIf="formControls['productPrice'].errors?.['min']">
+                            Product price must be greater than 0.
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="inStock" class="form-label">In stock:</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="inStockYes" formControlName="inStock" [value]=true>
+                            <label for="inStockYes" class="form-label">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="inStockNo" formControlName="inStock" [value]=false>
+                            <label for="inStockNo" class="form-label">No</label>
+                        </div>
+                        <div *ngIf="formControls['inStock'].invalid && formControls['inStock'].touched">
+                            <small class="text-danger" *ngIf="formControls['inStock'].errors?.['required']">
+                                In stock status is required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive">
+                    <label for="isActive" class="form-label">Active</label>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Add Product</button>
+                <a [routerLink]="['/products']" routerLinkActive="router-link-active">Back to List</a> 
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="container">
+    <h2>Add Category</h2>
+    <div class="position-relative">
+        <div *ngIf="loading" class="loader-overlay">
+            <img src="assets/loaderImage.gif"  class="loader-overlay" alt="loading" />
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form #addCategoryTFForm="ngForm" class="needs-validation" (ngSubmit)="onSubmit(addCategoryTFForm)" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="categoryName">Category Name:</label>
+                        <input type="text" class="form-control" id="categoryName" name="categoryName"
+                            [(ngModel)]="category.categoryName" required minlength="3">
+                        <div
+                            *ngIf="addCategoryTFForm.controls['categoryName']?.invalid && addCategoryTFForm.controls['categoryName']?.touched">
+                            <small class="text-danger"
+                                *ngIf="addCategoryTFForm.controls['categoryName']?.errors?.['required']">Category name
+                                is
+                                required.</small>
+                            <small class="text-danger"
+                                *ngIf="addCategoryTFForm.controls['categoryName']?.errors?.['minlength']">Name must be
+                                at least 3 characters
+                                long.</small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="categoryDescription">Category Description:</label>
+                        <input type="text" class="form-control" id="categoryDescription" name="categoryDescription"
+                            [(ngModel)]="category.categoryDescription" required minlength="3">
+                        <div
+                            *ngIf="addCategoryTFForm.controls['categoryDescription']?.invalid && addCategoryTFForm.controls['categoryDescription']?.touched">
+                            <small class="text-danger"
+                                *ngIf="addCategoryTFForm.controls['categoryDescription']?.errors?.['required']">Category
+                                description is required.</small>
+                            <small class="text-danger"
+                                *ngIf="addCategoryTFForm.controls['categoryDescription']?.errors?.['minlength']">Name
+                                must
+                                be
+                                at least 3 characters
+                                long.</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="addCategoryTFForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

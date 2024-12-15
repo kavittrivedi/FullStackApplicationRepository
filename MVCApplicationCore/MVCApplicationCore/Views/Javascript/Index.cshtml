@@ -1,0 +1,25 @@
+﻿<script type="text/javascript">
+    let currentDate = new Date();
+    console.log("Current date "+ currentDate);
+
+    let specificDate = new Date(2024, 1, 29, 12, 30, 0);
+    console.log("specific Date " + specificDate);
+
+    let month = specificDate.getMonth();
+    console.log(month); // Output: 2 (March)
+
+    let day = specificDate.getDate();
+    console.log(day); // Output: 29
+
+    let year = specificDate.getFullYear();
+    console.log(year); // Output: 2024
+
+    let dayOfWeek = specificDate.getDay();
+    console.log(dayOfWeek); // Output: 5 (Friday)
+
+    let milliseconds = specificDate.getTime();
+    console.log(milliseconds); // Output: Number of milliseconds since 1970
+
+    let dateString = specificDate.toLocaleDateString();
+    console.log(dateString); // Output: "3/29/2024" (depending on locale settings)
+</script>

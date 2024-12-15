@@ -1,0 +1,63 @@
+﻿<div id="loader" style="display:none;">
+    <img src="~/images/loaderimage.gif" />
+</div>
+<h1>Category Details</h1>
+<div>
+    <h4>Name: <label id="categoryName"></label>  </h4>
+    <h4>Description: <label id="categoryDescription"></label> </h4>
+</div>
+<p>
+    @* <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model.CategoryId">Delete</a> *@
+</p>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/categorydetail.js"></script>
+<script>
+    // $(document).ready(function () {
+    //     GetCategoryDetails();
+    // });
+
+    // function GetCategoryDetails() {
+    //     $('#loader').show();
+    //     var currentUrl = window.location.href;
+    //     var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+    //     $.ajax({
+    //         url: "http://localhost:5144/api/Category/GetCategoryById/"+id,
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         success: function (response) {
+    //             if (response.success) {
+    //                 $("#categoryName").html(response.data.categoryName);
+    //                 $("#categoryDescription").html(response.data.categoryDescription);
+    //             }
+    //         },
+    //         error: function (xhr, status, error) {
+    //             // Check if there is a responseText available
+    //             if (xhr.responseText) {
+    //                 try {
+    //                     // Parse the responseText into a JavaScript object
+    //                     var errorResponse = JSON.parse(xhr.responseText);
+
+    //                     // Check the properties of the errorResponse object
+    //                     if (errorResponse && errorResponse.message) {
+    //                         // Display the error message to the user
+    //                         alert('Error: ' + errorResponse.message);
+    //                     } else {
+    //                         // Display a generic error message
+    //                         alert('An error occurred. Please try again.');
+    //                     }
+    //                 } catch (parseError) {
+    //                     console.error('Error parsing response:', parseError);
+    //                     alert('An error occurred. Please try again.');
+    //                 }
+    //             } else {
+    //                 // Display a generic error message if no responseText is available
+    //                 alert('An unexpected error occurred. Please try again.');
+    //             }
+    //         },
+    //         complete: function () {
+    //             $('#loader').hide();
+    //         }
+    //     });
+    // }
+</script>

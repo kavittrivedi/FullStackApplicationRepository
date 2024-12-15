@@ -1,0 +1,12 @@
+<div>
+    <h1>Welcome!</h1>
+    <p *ngIf="isLoggedIn">You are logged in.</p>
+    <p *ngIf="!isLoggedIn">Please log in to continue.</p>
+</div>
+
+<ng-template [ngIf]="isLoggedIn">
+    <div>You are logged in.</div>
+</ng-template>
+<ng-template [ngIf]="!isLoggedIn">
+    <div>Please log in to continue.</div>
+</ng-template>

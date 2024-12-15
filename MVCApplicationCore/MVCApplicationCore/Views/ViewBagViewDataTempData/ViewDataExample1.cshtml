@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_MyLayout";
+    // casting
+    List<Category> categories = ViewData["categories"] as List<Category>;
+
+}
+<h2>Categories</h2>
+<ul>
+    @if (categories != null && categories.Any())
+    {
+        foreach (var category in categories)
+        {
+            <li>@category.Name</li>
+        }
+    }
+    else
+    {
+        <li>No record found.</li>
+    }
+</ul>

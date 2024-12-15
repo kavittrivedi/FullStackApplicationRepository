@@ -1,0 +1,35 @@
+<h1>Categories</h1>
+<div *ngIf="loading">
+  <img src="assets/loaderImage.gif" alt="loading..." />
+</div>
+<table class="table" *ngIf="!loading">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="!loading && !categories">
+      <td colspan="3">No categories found.</td>
+    </tr>
+    <tr *ngFor="let category of categories">
+      <td>{{category.categoryName}}</td>
+      <td>{{category.categoryDescription}}</td>
+      <td>
+        <button class="btn btn-outline-primary rounded-pill btn-sm"
+          (click)="updateCategoryDetails(category.categoryId)">
+          Edit
+        </button>|
+        <button class="btn btn-outline-info rounded-pill btn-sm" (click)="categoryDetails(category.categoryId)">
+          Details
+        </button>|
+        <button class="btn btn-outline-danger rounded-pill btn-sm" (click)="confirmDelete(category.categoryId)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a [routerLink]="['/addcategory']" routerLinkActive="router-link-active">Add</a>

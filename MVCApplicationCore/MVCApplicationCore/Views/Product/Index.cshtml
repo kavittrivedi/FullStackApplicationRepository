@@ -1,0 +1,61 @@
+﻿@model List<Product>
+<h1>Products</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category Name</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Price</th>
+            <th>Available</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Category.Name </td>
+                <td>@product.ProductName </td>
+                <td>@product.ProductDescription</td>
+                <td>
+                    @product.ProductPrice
+                </td>
+                @if (product.InStock)
+                {
+                    <td>
+                        Available
+                    </td>
+                }
+                else
+                {
+                    <td>
+                       Not Available
+                    </td>
+                }
+                @if (product.IsActive)
+                {
+                    <td>
+                        Visible
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Not Visible
+                    </td>
+                }
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.ProductId">Edit</a>|
+                    <a asp-action="Details" asp-route-id="@product.ProductId">Details</a>|
+                    <a asp-action="Delete" asp-route-id="@product.ProductId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Add</a>

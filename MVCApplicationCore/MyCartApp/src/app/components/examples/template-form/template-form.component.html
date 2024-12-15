@@ -1,0 +1,96 @@
+<div class="container">
+    <h2>Template Form example</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form #myForm="ngForm" class="need-validation" (ngSubmit)="onSubmit(myForm)" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required
+                        minlength="3">
+                    <div *ngIf="myForm.controls['name']?.invalid && myForm.controls['name']?.dirty">
+                        <small class="text-danger" *ngIf="myForm.controls['name']?.errors?.['required']">Name is
+                            required.</small>
+                        <small class="text-danger" *ngIf="myForm.controls['name']?.errors?.['minlength']">Name must be
+                            at least 3 characters
+                            long.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required
+                        email>
+                    <div *ngIf="myForm.controls['email']?.invalid && myForm.controls['email']?.touched">
+                        <small class="text-danger" *ngIf="myForm.controls['email']?.errors?.['required']">Email is
+                            required.</small>
+                        <small class="text-danger" *ngIf="myForm.controls['email']?.errors?.['email']">Invalid email
+                            format.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="age">Age:</label>
+                    <input type="number" class="form-control" id="age" name="age" [(ngModel)]="user.age" required
+                        min="18" max="65">
+                    <div *ngIf="myForm.controls['age']?.invalid && myForm.controls['age']?.touched">
+                        <small class="text-danger" *ngIf="myForm.controls['age']?.errors?.['required']">Age is
+                            required.</small>
+                        <small class="text-danger" *ngIf="myForm.controls['age']?.errors?.['min']">Age must be at least
+                            18.</small>
+                        <small class="text-danger" *ngIf="myForm.controls['age']?.errors?.['max']">Age cannot be more
+                            than 65.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="website">Website:</label>
+                    <input type="url" class="form-control" id="website" name="website" [(ngModel)]="user.website"
+                        pattern="https?://.+">
+                    <div *ngIf="myForm.controls['website']?.invalid && myForm.controls['website']?.touched">
+                        <small class="text-danger" *ngIf="myForm.controls['website']?.errors?.['pattern']">Website must
+                            start with http://
+                            or
+                            https://.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender:</label>
+                    <div>
+                        <input type="radio" id="male" name="gender" value="male" [(ngModel)]="user.gender" required>
+                        <label class="form-label" for="male">Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="female" name="gender" value="female" [(ngModel)]="user.gender" required>
+                        <label class="form-label" for="female">Female</label>
+                    </div>
+                    <div *ngIf="myForm.controls['gender']?.invalid && myForm.controls['gender']?.touched">
+                        <small class="text-danger">Gender is required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="country">Country:</label>
+                    <select id="country" name="country" class="form-control" [(ngModel)]="user.country" required>
+                        <option value="" disabled>Select your country</option>
+                        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                    </select>
+                    <div *ngIf="myForm.controls['country']?.invalid && myForm.controls['country']?.touched">
+                        <small class="text-danger">Country is required.</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Interests:</label>
+                    <div>
+                        <input type="checkbox" id="sports" name="sports" [(ngModel)]="user.interests.sports">
+                        <label class="form-label" for="sports">Sports</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="music" name="music" [(ngModel)]="user.interests.music">
+                        <label class="form-label" for="music">Music</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="travel" name="travel" [(ngModel)]="user.interests.travel">
+                        <label class="form-label" for="travel">Travel</label>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="myForm.invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model List<Order>
+<div class="container">
+    <h2>Orders</h2>
+    <div class="row">
+        @foreach (var order in Model)
+        {
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Order #@order.OrderId</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Order Price: @order.OrderPrice</h5>
+                        <p class="card-text">Order Date: @order.OrderDate.ToString("dd MMM, yyyy, hh:mm") </p>
+                        @Html.Partial("_OrderItemPartialView", @order.OrderItem)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
